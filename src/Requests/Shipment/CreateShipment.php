@@ -14,7 +14,7 @@ use SmartDato\ShippyPro\Data\Shipment\ShipmentData;
  * This endpoint creates a shipment in Mercury and generates an Amazon Shipping label for the final
  * mile delivery.
  */
-class ImportShipment extends Request implements HasBody
+class CreateShipment extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -22,7 +22,7 @@ class ImportShipment extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return '/shipment';
+        return '';
     }
 
     public function __construct(
