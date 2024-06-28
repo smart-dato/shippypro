@@ -2,6 +2,7 @@
 
 namespace SmartDato\ShippyPro;
 
+use Saloon\Http\Auth\BasicAuthenticator;
 use Saloon\Http\Connector;
 use SmartDato\ShippyPro\Resource\Shipment;
 
@@ -17,9 +18,12 @@ class ShippyPro extends Connector
         return config('shippypro.url');
     }
 
-    protected function defaultAuth(): ShippyProAuthenticator
+    protected function defaultAuth(): BasicAuthenticator
     {
-        return new ShippyProAuthenticator($this->authkey ?? config('shippypro.authkey'));
+        return new BasicAuthenticator(
+            username: $this->authkey ?? config('shippypro.authkey'), 
+            password: ''
+        );
     }
 
     public function shipment(): Shipment

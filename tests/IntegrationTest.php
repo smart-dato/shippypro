@@ -62,14 +62,16 @@ beforeEach(function() {
 });
 
 it('can create shipment', function () {
-    $connector = new ShippyPro();
+    $connector = new ShippyPro(
+        authkey: '__AUTHKEY__'
+    );
     $connector->withMockClient(new MockClient([
         CreateShipment::class => MockResponse::fixture('create_shipment.success'),
     ]));
 
     $connector->debugRequest(function (PendingRequest $pendingRequest, RequestInterface $psrRequest) {
-        // expect($pendingRequest)->dd();
-        // expect($psrRequest)->dd();
+        expect($pendingRequest)->dd();
+        expect($psrRequest)->dd();
     });
 
     $response = (new Shipment($connector))
