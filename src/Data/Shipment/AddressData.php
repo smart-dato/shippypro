@@ -7,6 +7,19 @@ use SmartDato\ShippyPro\Enums\Country;
 
 class AddressData extends Data
 {
+    /**
+     * @param string $name 
+     * @param string $company 
+     * @param string $street1 
+     * @param string $city 
+     * @param string $zip 
+     * @param Country $country 
+     * @param string $phone 
+     * @param string $email 
+     * @param null|string $street2 
+     * @param null|string $state 
+     * @return void 
+     */
     public function __construct(
         protected string $name,
         protected string $company,

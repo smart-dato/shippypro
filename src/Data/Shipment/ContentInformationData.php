@@ -8,6 +8,16 @@ use SmartDato\ShippyPro\Enums\Currency;
 
 class ContentInformationData extends Data
 {
+    /**
+     * @param string $description 
+     * @param float $weight 
+     * @param int $quantity 
+     * @param float $unitValue 
+     * @param string $hsCode 
+     * @param null|Country $originCountry 
+     * @param null|Currency $currency 
+     * @return void 
+     */
     public function __construct(
         protected string $description,
         protected float $weight,

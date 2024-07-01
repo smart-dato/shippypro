@@ -6,6 +6,13 @@ use SmartDato\ShippyPro\Contracts\Data;
 
 class ParcelData extends Data
 {
+    /**
+     * @param int $length 
+     * @param int $width 
+     * @param int $height 
+     * @param float $weight 
+     * @return void 
+     */
     public function __construct(
         protected int $length,
         protected int $width,
