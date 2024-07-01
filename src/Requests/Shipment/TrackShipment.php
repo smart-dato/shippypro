@@ -6,9 +6,9 @@ use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
-use SmartDato\ShippyPro\Data\Shipment\ShipmentData;
+use SmartDato\ShippyPro\Data\Shipment\TrackData;
 
-class CreateShipment extends Request implements HasBody
+class TrackShipment extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -20,12 +20,12 @@ class CreateShipment extends Request implements HasBody
     }
 
     public function __construct(
-        protected ShipmentData $shipment
+        protected TrackData $track
     ) {
     }
 
     protected function defaultBody(): array
     {
-        return $this->shipment->build();
+        return $this->track->build();
     }
 }

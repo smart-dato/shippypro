@@ -1,16 +1,18 @@
 <?php
 
 use Illuminate\Support\Str;
-use Psr\Http\Message\RequestInterface;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
-use Saloon\Http\PendingRequest;
 use SmartDato\ShippyPro\Data\Shipment\AddressData;
 use SmartDato\ShippyPro\Data\Shipment\ParcelData;
 use SmartDato\ShippyPro\Data\Shipment\ShipmentData;
+use SmartDato\ShippyPro\Data\Shipment\TrackData;
 use SmartDato\ShippyPro\Enums\Country;
 use SmartDato\ShippyPro\Enums\Incoterm;
+use SmartDato\ShippyPro\Requests\Monitoring\Ping;
 use SmartDato\ShippyPro\Requests\Shipment\CreateShipment;
+use SmartDato\ShippyPro\Requests\Shipment\TrackShipment;
+use SmartDato\ShippyPro\Resource\Monitoring;
 use SmartDato\ShippyPro\Resource\Shipment;
 use SmartDato\ShippyPro\ShippyPro;
 
@@ -61,21 +63,50 @@ beforeEach(function() {
     $this->shipment = $data;
 });
 
-it('can create shipment', function () {
+it('can create a shipment', function () {
     $connector = new ShippyPro(
         authkey: '__AUTHKEY__'
     );
     $connector->withMockClient(new MockClient([
-        CreateShipment::class => MockResponse::fixture('create_shipment.success'),
+        CreateShipment::class => MockResponse::fixture('response.success'),
     ]));
 
-    $connector->debugRequest(function (PendingRequest $pendingRequest, RequestInterface $psrRequest) {
-        expect($pendingRequest)->dd();
-        expect($psrRequest)->dd();
-    });
+    // $connector->debug();
 
     $response = (new Shipment($connector))
         ->create($this->shipment);
+
+    expect($response->status())->toBe(200);
+});
+
+it('can track a shipment', function () {
+    $connector = new ShippyPro(
+        authkey: '__AUTHKEY__'
+    );
+    $connector->withMockClient(new MockClient([
+        TrackShipment::class => MockResponse::fixture('response.success'),
+    ]));
+
+    // $connector->debug();
+
+    $response = (new Shipment($connector))
+        ->track(new TrackData('__TRACKING_CODE__'));
+
+    expect($response->status())->toBe(200);
+});
+
+it('can create a monitoring ping request', function () {
+    $connector = new ShippyPro(
+        authkey: '__AUTHKEY__'
+    );
+    $connector->withMockClient(new MockClient([
+        Ping::class => MockResponse::fixture('response.success'),
+    ]));
+
+    // $connector->debug();
+
+    $response = (new Monitoring($connector))
+        ->ping();
 
     expect($response->status())->toBe(200);
 });

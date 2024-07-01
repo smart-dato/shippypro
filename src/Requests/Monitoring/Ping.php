@@ -1,14 +1,13 @@
 <?php
 
-namespace SmartDato\ShippyPro\Requests\Shipment;
+namespace SmartDato\ShippyPro\Requests\Monitoring;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
-use SmartDato\ShippyPro\Data\Shipment\ShipmentData;
 
-class CreateShipment extends Request implements HasBody
+class Ping extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -19,13 +18,15 @@ class CreateShipment extends Request implements HasBody
         return '';
     }
 
-    public function __construct(
-        protected ShipmentData $shipment
-    ) {
+    public function __construct() {
+        //
     }
 
     protected function defaultBody(): array
     {
-        return $this->shipment->build();
+        return [
+            'Method' => 'Ping',
+            'Params' => ['_' => ''],
+        ];
     }
 }
