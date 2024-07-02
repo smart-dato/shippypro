@@ -9,12 +9,13 @@ use SmartDato\ShippyPro\Resource\Shipment;
 class ShippyPro extends Connector
 {
     public function __construct(
+        public readonly ?string $url = null,
         public readonly ?string $authkey = null,
     ) {}
 
     public function resolveBaseUrl(): string
     {
-        return config('shippypro.url');
+        return $this->url ?? config('shippypro.url');
     }
 
     protected function defaultAuth(): BasicAuthenticator
