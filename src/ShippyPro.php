@@ -10,8 +10,7 @@ class ShippyPro extends Connector
 {
     public function __construct(
         public readonly ?string $authkey = null,
-    ) {
-    }
+    ) {}
 
     public function resolveBaseUrl(): string
     {
@@ -21,7 +20,7 @@ class ShippyPro extends Connector
     protected function defaultAuth(): BasicAuthenticator
     {
         return new BasicAuthenticator(
-            username: $this->authkey ?? config('shippypro.authkey'), 
+            username: $this->authkey ?? config('shippypro.authkey'),
             password: ''
         );
     }

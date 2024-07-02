@@ -18,7 +18,8 @@ class Ping extends Request implements HasBody
         return '';
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         //
     }
 

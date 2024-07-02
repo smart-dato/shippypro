@@ -9,32 +9,9 @@ use SmartDato\ShippyPro\Enums\Incoterm;
 class ShipmentData extends Data
 {
     /**
-     * @param AddressData $from 
-     * @param AddressData $to 
-     * @param array<ParcelData> $parcels 
-     * @param string $transactionId 
-     * @param string $carrierName 
-     * @param string $carrierService 
-     * @param string $carrierId 
-     * @param null|string $totalValue 
-     * @param null|string $contentDescription 
-     * @param null|int $insurance 
-     * @param null|Currency $insuranceCurrency 
-     * @param null|int $cashOnDelivery 
-     * @param null|Currency $cashOnDeliveryCurrency 
-     * @param null|int $cashOnDeliveryType 
-     * @param null|int $shipmentAmountPaid 
-     * @param null|int $shipmentCost 
-     * @param null|Currency $shipmentCostCurrency 
-     * @param null|string $orderId 
-     * @param null|string $rateId 
-     * @param null|Incoterm $incoterm 
-     * @param null|string $billAccountNumber 
-     * @param null|string $paymentMethod 
-     * @param null|string $note 
-     * @param null|string $async 
-     * @param array<ContentInformationData> $contentInformation 
-     * @return void 
+     * @param  array<ParcelData>  $parcels
+     * @param  array<ContentInformationData>  $contentInformation
+     * @return void
      */
     public function __construct(
         protected AddressData $from,
@@ -62,41 +39,40 @@ class ShipmentData extends Data
         protected ?string $note = '',
         protected ?string $async = '',
         protected ?array $contentInformation = null,
-    ) {
-    }
+    ) {}
 
     public function build(): array
     {
         $params = [
-         'from_address' => $this->from->build(),
-         'to_address' => $this->to->build(),
-         'parcels' => array_map(fn (ParcelData $parcel) => $parcel->build(), $this->parcels),
-         'TransactionID' => $this->transactionId,
-         'TotalValue' => $this->totalValue,
-         'ContentDescription' => $this->contentDescription,
-         'Insurance' => $this->insurance,
-         'InsuranceCurrency' => $this->insuranceCurrency->value,
-         'CashOnDelivery' => $this->cashOnDelivery,
-         'CashOnDeliveryCurrency' => $this->cashOnDeliveryCurrency->value,
-         'CashOnDeliveryType' => $this->cashOnDeliveryType,
-         'CarrierName' => $this->carrierName,
-         'CarrierService' => $this->carrierService,
-         'CarrierID' => $this->carrierId,
-         'ShipmentAmountPaid' => $this->shipmentAmountPaid,
-         'ShipmentCost' => $this->shipmentCost,
-         'ShipmentCostCurrency' => $this->shipmentCostCurrency->value,
-         'OrderID' => $this->orderId,
-         'RateID' => $this->rateId,
-         'Incoterm' => $this->incoterm->value,
-         'BillAccountNumber' => $this->billAccountNumber,
-         'PaymentMethod' => $this->paymentMethod,
-         'Note' => $this->note,
-         'Async' => $this->async,
+            'from_address' => $this->from->build(),
+            'to_address' => $this->to->build(),
+            'parcels' => array_map(fn (ParcelData $parcel) => $parcel->build(), $this->parcels),
+            'TransactionID' => $this->transactionId,
+            'TotalValue' => $this->totalValue,
+            'ContentDescription' => $this->contentDescription,
+            'Insurance' => $this->insurance,
+            'InsuranceCurrency' => $this->insuranceCurrency->value,
+            'CashOnDelivery' => $this->cashOnDelivery,
+            'CashOnDeliveryCurrency' => $this->cashOnDeliveryCurrency->value,
+            'CashOnDeliveryType' => $this->cashOnDeliveryType,
+            'CarrierName' => $this->carrierName,
+            'CarrierService' => $this->carrierService,
+            'CarrierID' => $this->carrierId,
+            'ShipmentAmountPaid' => $this->shipmentAmountPaid,
+            'ShipmentCost' => $this->shipmentCost,
+            'ShipmentCostCurrency' => $this->shipmentCostCurrency->value,
+            'OrderID' => $this->orderId,
+            'RateID' => $this->rateId,
+            'Incoterm' => $this->incoterm->value,
+            'BillAccountNumber' => $this->billAccountNumber,
+            'PaymentMethod' => $this->paymentMethod,
+            'Note' => $this->note,
+            'Async' => $this->async,
         ];
 
         if ($this->contentInformation) {
             $params['CN22Info'] = array_map(
-                fn(ContentInformationData $info) => $info->build(), 
+                fn (ContentInformationData $info) => $info->build(),
                 $this->contentInformation
             );
         }

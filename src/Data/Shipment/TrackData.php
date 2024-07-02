@@ -15,7 +15,7 @@ class TrackData extends Data
     public function build(): array
     {
         $params = [
-            'Code' => $this->code
+            'Code' => $this->code,
         ];
 
         return [

@@ -16,7 +16,7 @@ use SmartDato\ShippyPro\Resource\Monitoring;
 use SmartDato\ShippyPro\Resource\Shipment;
 use SmartDato\ShippyPro\ShippyPro;
 
-beforeEach(function() {
+beforeEach(function () {
     $to = new AddressData(
         name: 'Ole Olsen',
         company: 'Test Company',

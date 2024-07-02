@@ -21,7 +21,7 @@ it('can create a parcel', function () {
     expect($parcel->build())->toBeArray();
 });
 
-it('can create an address', function() {
+it('can create an address', function () {
     $faker = fake('gb');
 
     $address = new AddressData(
@@ -38,7 +38,7 @@ it('can create an address', function() {
     expect($address->build())->toBeArray();
 });
 
-it('can create a content information', function() {
+it('can create a content information', function () {
     $faker = fake('gb');
 
     $contentInformation = new ContentInformationData(
@@ -52,7 +52,7 @@ it('can create a content information', function() {
     expect($contentInformation->build())->toBeArray();
 });
 
-it('can create a shipment', function() {
+it('can create a shipment', function () {
     $faker = fake('gb');
 
     $to = new AddressData(

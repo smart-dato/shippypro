@@ -11,9 +11,7 @@ enum Incoterm: string
     case ExWorks = 'EXM';
 
     /**
-     * @param string $argument 
-     * @return Incoterm 
-     * @throws UnknownIncotermException 
+     * @throws UnknownIncotermException
      */
     public static function make(string $argument): Incoterm
     {
