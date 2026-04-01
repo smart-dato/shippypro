@@ -68,7 +68,7 @@ it('can create a shipment', function () {
         authkey: '__AUTHKEY__'
     );
     $connector->withMockClient(new MockClient([
-        CreateShipment::class => MockResponse::fixture('response.success'),
+        CreateShipment::class => MockResponse::fixture('response/success'),
     ]));
 
     // $connector->debug();
@@ -84,7 +84,7 @@ it('can track a shipment', function () {
         authkey: '__AUTHKEY__'
     );
     $connector->withMockClient(new MockClient([
-        TrackShipment::class => MockResponse::fixture('response.success'),
+        TrackShipment::class => MockResponse::fixture('response/success'),
     ]));
 
     // $connector->debug();
@@ -100,7 +100,7 @@ it('can create a monitoring ping request', function () {
         authkey: '__AUTHKEY__'
     );
     $connector->withMockClient(new MockClient([
-        Ping::class => MockResponse::fixture('response.success'),
+        Ping::class => MockResponse::fixture('response/success'),
     ]));
 
     // $connector->debug();

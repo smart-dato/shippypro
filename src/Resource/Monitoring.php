@@ -10,6 +10,6 @@ class Monitoring extends Resource
 {
     public function ping(): Response
     {
-        return $this->connector->send(new Ping());
+        return $this->connector->send(new Ping);
     }
 }
