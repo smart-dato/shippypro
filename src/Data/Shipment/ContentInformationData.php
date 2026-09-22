@@ -30,7 +30,7 @@ class ContentInformationData extends Data
             'Weight' => $this->weight,
             'Quantity' => $this->quantity,
             'UnitValue' => $this->unitValue,
-            'OriginCountry' => $this->originCountry?->value ?? '',
+            'OriginCountry' => $this->originCountry->value ?? '',
             'HSCode' => $this->hsCode,
             'Currency' => $this->currency->value,
         ];
