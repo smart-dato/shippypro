@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/smart-dato/shippypro.svg?style=flat-square)](https://packagist.org/packages/smart-dato/shippypro)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/shippypro/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/smart-dato/shippypro/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/shippypro/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/smart-dato/shippypro/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/smart-dato/shippypro/code-style.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/smart-dato/shippypro/actions?query=workflow%3A%22Code+style%22+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/smart-dato/shippypro.svg?style=flat-square)](https://packagist.org/packages/smart-dato/shippypro)
 
 This is a Laravel plugin for the [ShippyPro API](https://www.shippypro.com/ShippyPro-API-Documentation/)
@@ -50,10 +50,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
